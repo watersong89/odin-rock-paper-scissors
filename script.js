@@ -1,47 +1,69 @@
-let computerChoice = getComputerChoice();
-const playerSelection = prompt('Make your choice!').toLowerCase;
+let computerScore = 0;
+    let playerScore = 0;
+    let draws = 0;
 
-function getComputerChoice() {
-    let randomNumber = Math.random();
-    let result = '';
-    if(randomNumber <= 0.33) {
-        result = 'rock';
-    } else if (randomNumber > 0.33 && randomNumber < 0.66) {
-        result = 'paper';
-    } else {
-        result = 'scissors';
+function playGame() {
+
+    function getComputerChoice() {
+        let randomNumber = Math.random();
+        let result = '';
+        if(randomNumber <= 0.33) {
+            result = 'rock';
+        } else if (randomNumber > 0.33 && randomNumber < 0.66) {
+            result = 'paper';
+        } else {
+            result = 'scissors';
+        }
+        return result;
     }
-    return result;
+
+    const playerSelection = prompt('Make your choice!').toLowerCase();
+    const computerChoice = getComputerChoice();
+
+    function playRound(playerSelection, computerChoice) {
+        let result = '';
+        if (computerChoice === 'rock') {
+            if (playerSelection === 'rock') {
+                result = 'Draw!';
+                draws++;
+            } else if (playerSelection === 'paper') {
+                result = `You Win! ${playerSelection} beats ${computerChoice}!`;
+                playerScore++;
+            } else {
+                result = `You Lose! ${computerChoice} beats ${playerSelection}!`;
+                computerScore++;
+            };
+        }else if (computerChoice === 'paper') {
+            if (playerSelection === 'rock') {
+                result = `You Lose! ${computerChoice} beats ${playerSelection}!`;
+                computerScore++;
+            } else if (playerSelection === 'paper') {
+                result = 'Draw!';
+                draws++
+            } else {
+                result = `You Win! ${playerSelection} beats ${computerChoice}!`;
+                playerScore++;
+            };
+        }else if (computerChoice === 'scissors') {
+            if (playerSelection === 'rock') {
+                result = `You Win! ${playerSelection} beats ${computerChoice}!`;
+                playerScore++;
+            } else if (playerSelection === 'paper') {
+                result = `You Lose! ${computerChoice} beats ${playerSelection}!`;
+                computerScore++;
+            } else {
+                result = 'Draw!';
+                draws++
+            }; 
+        }
+        return result;
+    }
+  
+    console.log(playRound(playerSelection, computerChoice));
+    const score = `Computer: ${computerScore}, Player: ${playerScore}, Draws: ${draws}`;
+    return score;
 }
 
-function playRound(playerSelection, computerChoice) {
-    let result = '';
-    if (computerChoice === 'rock') {
-        if (playerSelection === 'rock') {
-            result = 'Draw!';
-        } else if (playerSelection === 'paper') {
-            result = 'You Win! Paper beats Rock!';
-        } else {
-            result = 'You Lose! Rock beats Scissors!';
-        };
-    }else if (computerChoice === 'paper') {
-        if (playerSelection === 'rock') {
-            result = 'You lose! Paper beats Rock!';
-        } else if (playerSelection === 'paper') {
-            result = 'Draw!';
-        } else {
-            result = 'You Win! Scissors beat Paper!';
-        };
-    }else if (computerChoice === 'scissors') {
-        if (playerSelection === 'sock') {
-            result = 'You Win! Rock beats Scissors!';
-        } else if (playerSelection === 'paper') {
-            result = 'You lose! Scissors beat Paper!';
-        } else {
-            result = 'Draw';
-        }; 
-    }
-    return result;
+for (let i = 0; i < 5; i++) {
+console.log(playGame());
 }
-
-console.log(playRound(playerSelection, computerChoice));
