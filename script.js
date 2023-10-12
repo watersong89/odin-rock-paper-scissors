@@ -12,7 +12,7 @@ console.log(getComputerChoice());
 // var playerChoice = prompt("Rock, Paper or Scissors?")
 
 function playRound(playerChoice, getComputerChoice) {
-    if(playerChoice == getComputerChoice) {
+    if(playerChoice === computerSelection) {
         return('Tie')
     }
     else if(playerChoice == 'rock') {
