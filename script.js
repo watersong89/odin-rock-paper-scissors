@@ -1,6 +1,6 @@
 let computerScore = 0;
-    let playerScore = 0;
-    let draws = 0;
+let playerScore = 0;
+let draws = 0;
 
 function playGame() {
     const playerSelection = prompt('Make your choice!').toLowerCase();
@@ -23,7 +23,7 @@ function playRound(playerSelection, computerChoice) {
             result = `You Lose! ${computerChoice} beats ${playerSelection}!`;
             computerScore++;
         };
-    }else if (computerChoice === 'paper') {
+    } else if (computerChoice === 'paper') {
         if (playerSelection === 'rock') {
             result = `You Lose! ${computerChoice} beats ${playerSelection}!`;
             computerScore++;
@@ -34,7 +34,7 @@ function playRound(playerSelection, computerChoice) {
             result = `You Win! ${playerSelection} beats ${computerChoice}!`;
             playerScore++;
         };
-    }else if (computerChoice === 'scissors') {
+    } else if (computerChoice === 'scissors') {
         if (playerSelection === 'rock') {
             result = `You Win! ${playerSelection} beats ${computerChoice}!`;
             playerScore++;
@@ -44,7 +44,7 @@ function playRound(playerSelection, computerChoice) {
         } else {
             result = 'Draw!';
             draws++
-        }; 
+        };
     }
     return result;
 }
@@ -52,7 +52,7 @@ function playRound(playerSelection, computerChoice) {
 function getComputerChoice() {
     let randomNumber = Math.random();
     let result = '';
-    if(randomNumber <= 0.33) {
+    if (randomNumber <= 0.33) {
         result = 'rock';
     } else if (randomNumber > 0.33 && randomNumber < 0.66) {
         result = 'paper';
@@ -63,5 +63,5 @@ function getComputerChoice() {
 }
 
 for (let i = 0; i < 5; i++) {
-console.log(playGame());
+    console.log(playGame());
 }
