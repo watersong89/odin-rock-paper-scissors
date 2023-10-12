@@ -1,6 +1,7 @@
+let computerChoice;
+
 function getComputerChoice() {
     let randomNumber = Math.random();
-    let computerChoice;
     if(randomNumber <= 0.33) {
         computerChoice = 'Rock';
     } else if (randomNumber > 0.33 && randomNumber < 0.66) {
@@ -11,5 +12,9 @@ function getComputerChoice() {
     return computerChoice;
 }
 
+function playRound(playerSelection, computerChoice) {
 
 
+}
+
+console.log(getComputerChoice();)
