@@ -2,16 +2,12 @@ let computerScore = 0;
 let playerScore = 0;
 let draws = 0;
 
-function playGame() {
-    const playerSelection = prompt('Make your choice!').toLowerCase();
-    const computerChoice = getComputerChoice();
-    console.log(playRound(playerSelection, computerChoice));
-    const score = `Computer: ${computerScore}, Player: ${playerScore}, Draws: ${draws}`;
-    return score;
-}
+
 
 function playRound(playerSelection, computerChoice) {
     let result = '';
+    let scoreElement = document.querySelector('.js-score');
+    let messageElement = document.querySelector('.js-result-message')
     if (computerChoice === 'rock') {
         if (playerSelection === 'rock') {
             result = 'Draw!';
@@ -46,8 +42,11 @@ function playRound(playerSelection, computerChoice) {
             draws++
         };
     }
-    return result;
+    messageElement.textContent = result;
+    scoreElement.textContent = `Computer Wins: ${computerScore}, Player Wins: ${playerScore}, Draws: ${draws}`;
 }
+
+
 
 function getComputerChoice() {
     let randomNumber = Math.random();
@@ -66,14 +65,15 @@ const rockButton = document.querySelector('.js-button-rock');
 const paperButton = document.querySelector('.js-button-paper');
 const scissorsButton = document.querySelector('.js-button-scissors');
 
+
 rockButton.addEventListener('click', () => {
-    console.log(playRound('rock', getComputerChoice()));
+    playRound('rock', getComputerChoice());
 });
 
 paperButton.addEventListener('click', () => {
-    console.log(playRound('paper', getComputerChoice()));
+    playRound('paper', getComputerChoice());
 });
 
 scissorsButton.addEventListener('click', () => {
-    console.log(playRound('scissors', getComputerChoice()));
+    playRound('scissors', getComputerChoice());
 });
