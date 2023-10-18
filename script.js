@@ -2,8 +2,6 @@ let computerScore = 0;
 let playerScore = 0;
 let draws = 0;
 
-
-
 function playRound(playerSelection, computerChoice) {
     let result = '';
     let scoreElement = document.querySelector('.js-score');
@@ -44,9 +42,13 @@ function playRound(playerSelection, computerChoice) {
     }
     messageElement.textContent = result;
     scoreElement.textContent = `Computer Wins: ${computerScore}, Player Wins: ${playerScore}, Draws: ${draws}`;
+
+    if (computerScore === 5) {
+        alert('You lose! Computer first to reach five!');
+    } else if (playerScore === 5) {
+        alert('You win! You beat the computer to five!');
+    }
 }
-
-
 
 function getComputerChoice() {
     let randomNumber = Math.random();
@@ -64,7 +66,6 @@ function getComputerChoice() {
 const rockButton = document.querySelector('.js-button-rock');
 const paperButton = document.querySelector('.js-button-paper');
 const scissorsButton = document.querySelector('.js-button-scissors');
-
 
 rockButton.addEventListener('click', () => {
     playRound('rock', getComputerChoice());
