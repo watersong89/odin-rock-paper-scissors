@@ -62,4 +62,18 @@ function getComputerChoice() {
     return result;
 }
 
+const rockButton = document.querySelector('.js-button-rock');
+const paperButton = document.querySelector('.js-button-paper');
+const scissorsButton = document.querySelector('.js-button-scissors');
 
+rockButton.addEventListener('click', () => {
+    console.log(playRound('rock', getComputerChoice()));
+});
+
+paperButton.addEventListener('click', () => {
+    console.log(playRound('paper', getComputerChoice()));
+});
+
+scissorsButton.addEventListener('click', () => {
+    console.log(playRound('scissors', getComputerChoice()));
+});
