@@ -62,6 +62,4 @@ function getComputerChoice() {
     return result;
 }
 
-for (let i = 0; i < 5; i++) {
-    console.log(playGame());
-}
+
