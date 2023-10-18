@@ -1,11 +1,11 @@
 let computerScore = 0;
 let playerScore = 0;
 let draws = 0;
+let scoreElement = document.querySelector('.js-score');
+let messageElement = document.querySelector('.js-result-message');
 
 function playRound(playerSelection, computerChoice) {
     let result = '';
-    let scoreElement = document.querySelector('.js-score');
-    let messageElement = document.querySelector('.js-result-message')
     if (computerChoice === 'rock') {
         if (playerSelection === 'rock') {
             result = 'Draw!';
@@ -66,6 +66,7 @@ function getComputerChoice() {
 const rockButton = document.querySelector('.js-button-rock');
 const paperButton = document.querySelector('.js-button-paper');
 const scissorsButton = document.querySelector('.js-button-scissors');
+const resetButton = document.querySelector('.js-reset-button');
 
 rockButton.addEventListener('click', () => {
     playRound('rock', getComputerChoice());
@@ -78,3 +79,11 @@ paperButton.addEventListener('click', () => {
 scissorsButton.addEventListener('click', () => {
     playRound('scissors', getComputerChoice());
 });
+
+resetButton.addEventListener('click', () => {
+    computerScore = 0;
+    playerScore = 0;
+    draws = 0;
+    scoreElement.textContent = '';
+    messageElement.textContent = '';
+})
